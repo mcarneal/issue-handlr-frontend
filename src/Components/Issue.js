@@ -6,6 +6,7 @@ class Issue extends Component{
       <div className='Issue Card'>
         <h2>{this.props.title}</h2>
           <p>{this.props.description}</p>
+        
       </div>
     )
   }

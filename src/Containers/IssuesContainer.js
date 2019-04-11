@@ -10,7 +10,7 @@ class IssuesContainer extends Component{
   }
 
   render(){
-
+    console.log(this.props.issues)
     return(
       <div>
       <h2>Issues Container</h2>

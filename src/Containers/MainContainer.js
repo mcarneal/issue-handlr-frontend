@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import IssuesContainer from "./IssuesContainer"
+import MyAssignments from "./MyAssignments"
 
 class MainContainer extends Component {
   state = {
@@ -14,11 +15,16 @@ class MainContainer extends Component {
     }))
   }
 
+  findMyAssignments = (myId) => {
+    this.state.issues.employees.map()
+  }
+
   render() {
     return (
       <div>
       <h1>Main Container </h1>
       <IssuesContainer issues={this.state.issues} />
+
       </div>
     )
   }
