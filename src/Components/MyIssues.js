@@ -11,7 +11,7 @@ class MyIssues extends Component{
       <div class="description">{this.props.description}</div>
       </div>
       </div>
-    
+
     )
   }
 }

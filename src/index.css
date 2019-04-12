@@ -38,7 +38,7 @@ code {
 
 .ui.card,
 .ui.cards>.card {
-  background-color: rgb(76,75,75);
+  background-color: rgb(51,51,51);
   border-radius: 3%;
   padding: 1px !important;
   margin: 1% !important;
@@ -48,8 +48,8 @@ code {
 
 .ui.card,
 .ui.cards>.card:hover{
-  background-color: grey;
+  background-color: rgb(67,67,67);
 }
 .header, .meta, .description{
-    color : white !important;
+    color : rgb(191,191,191) !important;
 }
