@@ -15,7 +15,7 @@ class MainContainer extends Component {
     .then(issues => this.setState({
       issues: issues
     }))
-    fetch('http://localhost:3000/api/v1/employees/9')
+    fetch('http://localhost:3000/api/v1/employees/8')
     .then(resp => resp.json())
     .then(myIssues => {
       this.setState({myIssues: myIssues.issues})

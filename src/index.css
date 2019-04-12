@@ -17,14 +17,39 @@ code {
   content: "";
   display: flex;
   clear: both;
+  height: 100%;
+  position: fixed;
+
 }
 .My.Assignments.Container {
   float: left;
   width: 25%;
-  margin-left: 10%;
+  margin-left: 3%;
+  margin-top: 3%;
+  overflow: scroll;
+
 }
 
 .IssuesContainer {
   float: left;
   width: 75%;
+  overflow: scroll;
+}
+
+.ui.card,
+.ui.cards>.card {
+  background-color: rgb(76,75,75);
+  border-radius: 3%;
+  padding: 1px !important;
+  margin: 1% !important;
+  width: auto;
+
+}
+
+.ui.card,
+.ui.cards>.card:hover{
+  background-color: grey;
+}
+.header, .meta, .description{
+    color : white !important;
 }
