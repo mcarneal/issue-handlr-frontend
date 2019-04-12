@@ -19,11 +19,15 @@ class MainContainer extends Component {
     this.state.issues.employees.map()
   }
 
+  selectIssueAssignmentHandler = (issue) =>{
+    console.log("inside select selectIssueAssignmentHandler", issue);
+  }
+
   render() {
     return (
       <div>
       <h1>Main Container </h1>
-      <IssuesContainer issues={this.state.issues} />
+      <IssuesContainer issues={this.state.issues} selectIssueAssignmentHandler={this.selectIssueAssignmentHandler}/>
 
       </div>
     )

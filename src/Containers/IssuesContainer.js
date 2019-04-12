@@ -6,11 +6,10 @@ import Issue from '../Components/Issue'
 class IssuesContainer extends Component{
 
   issuesArray = () => {
-    return this.props.issues.map(issue => <Issue key={issue.id} {...issue}/>)
+    return this.props.issues.map(issue => <Issue key={issue.id} {...issue} selectIssueAssignmentHandler={this.props.selectIssueAssignmentHandler}/>)
   }
 
   render(){
-    console.log(this.props.issues)
     return(
       <div>
       <h2>Issues Container</h2>
