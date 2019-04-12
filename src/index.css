@@ -12,3 +12,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.MainContainer {
+  content: "";
+  display: flex;
+  clear: both;
+}
+.My.Assignments.Container {
+  float: left;
+  width: 25%;
+  margin-left: 10%;
+}
+
+.IssuesContainer {
+  float: left;
+  width: 75%;
+}

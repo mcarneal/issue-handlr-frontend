@@ -31,3 +31,15 @@
     transform: rotate(360deg);
   }
 }
+
+.MainContainer {
+  float: left;
+}
+
+.My.Assignments.Container {
+  width: 25%;
+}
+
+.IssuesContainer {
+  width: 75%;
+}

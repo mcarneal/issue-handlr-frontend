@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import IssuesContainer from "./IssuesContainer"
 import MyAssignments from "./MyAssignments"
+import '../App.css'
 
 class MainContainer extends Component {
   state = {
-    issues: []
+    issues: [],
+    myIssues: []
   }
 
   componentDidMount() {
@@ -13,16 +15,17 @@ class MainContainer extends Component {
     .then(issues => this.setState({
       issues: issues
     }))
-  }
-
-  findMyAssignments = (myId) => {
-    this.state.issues.employees.map()
+    fetch('http://localhost:3000/api/v1/employees/9')
+    .then(resp => resp.json())
+    .then(myIssues => {
+      this.setState({myIssues: myIssues.issues})
+    })
   }
 
   render() {
     return (
-      <div>
-      <h1>Main Container </h1>
+      <div className="MainContainer">
+      <MyAssignments myIssues={this.state.myIssues}/>
       <IssuesContainer issues={this.state.issues} />
 
       </div>
