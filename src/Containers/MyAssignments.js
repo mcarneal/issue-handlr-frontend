@@ -15,7 +15,7 @@ class MyAssignments extends Component {
     console.log("inside assignments render",this.props.myIssues)
     return(
       <div className='My Assignments Container'>
-        <div class="ui cards">
+        <div className="ui cards">
          {this.myIssues()}
        </div>
       </div>

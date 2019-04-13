@@ -3,8 +3,6 @@ import Issue from '../Components/Issue'
 import '../index.css'
 
 
-
-
 class IssuesContainer extends Component{
 
   issuesArray = () => {
@@ -12,15 +10,14 @@ class IssuesContainer extends Component{
   }
 
   render(){
-    console.log(this.props.issues)
     return(
       <div className="IssuesContainer">
       <h2>Issues Container</h2>
-        <table class="ui celled inverted selectable table">
-          <thead class=""><tr class="">
-            <th class="">Title</th>
-            <th class="">Description</th>
-            <th class="">Status</th>
+        <table className="ui celled inverted selectable table">
+          <thead className=""><tr className="">
+            <th className="">Title</th>
+            <th className="">Description</th>
+            <th className="">Status</th>
           </tr>
          </thead>
          {this.issuesArray()}

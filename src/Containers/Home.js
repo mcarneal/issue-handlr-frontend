@@ -3,7 +3,7 @@ import IssuesContainer from "./IssuesContainer"
 import MyAssignments from "./MyAssignments"
 import '../App.css'
 
-class MainContainer extends Component {
+class Home extends Component {
   state = {
     issues: [],
     myIssues: []
@@ -23,14 +23,14 @@ class MainContainer extends Component {
   }
 
   render() {
+    console.log('state issues', this.state.myIssues)
     return (
-      <div className="MainContainer">
+      <div className="Home">
       <MyAssignments myIssues={this.state.myIssues}/>
       <IssuesContainer issues={this.state.issues} />
-
       </div>
     )
   }
 }
 
-export default MainContainer;
+export default Home;

@@ -1,16 +1,40 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import MainContainer from "./Containers/MainContainer"
 import Login from "./Containers/Login"
 import Signup from "./Containers/Signup"
+import IssuesContainer from "./Containers/IssuesContainer"
+import MyAssignments from "./Containers/MyAssignments"
+import Home from "./Containers/Home"
+
+import { Route, Switch, withRouter, Link } from "react-router-dom"
 
 
 class App extends Component {
 
   state= {
+    // issues: [],
+    // myIssues: [],
     loggedInEmployee: {}
   }
+  //
+  // componentDidMount() {
+  //   if (this.loggedInEmployee){
+  //     fetch('http://localhost:3000/api/v1/issues')
+  //     .then(resp => resp.json())
+  //     .then(issues => this.setState({
+  //       issues: issues
+  //     }))
+  //
+  //     fetch('http://localhost:3000/api/v1/employees/8')
+  //     .then(resp => resp.json())
+  //     .then(myIssues => {
+  //       this.setState({myIssues: myIssues.issues})
+  //     })
+  //   } else {
+  //     return (<h1>not logged in</h1>)
+  //   }
+  // }
 
   signupSubmitHandler = (form) => {
     console.log(form.password);
@@ -33,13 +57,14 @@ class App extends Component {
         this.setState({loggedInEmployee})
       })
   }
+
   render() {
     console.log("logging from rendder",this.state.loggedInEmployee)
     return(
-      <div>
-        <Login />
-        <Signup signupSubmitHandler={this.signupSubmitHandler}/>
-      </div>
+      <Switch>
+        <Route  path ="/home" component={Home}/>
+        <Route  path="/" component={Login}/>
+      </Switch>
     )
   }
 }

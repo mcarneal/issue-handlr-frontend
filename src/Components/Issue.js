@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 class Issue extends Component{
   render(){
     return(
-      <tbody class="">
-        <tr class="">
-          <td class="">{this.props.title}</td>
-          <td class="">{this.props.description}</td>
-          <td class="right aligned">Unassigned</td>
+      <tbody className="">
+        <tr className="">
+          <td className="">{this.props.title}</td>
+          <td className="">{this.props.description}</td>
+          <td className="right aligned">Unassigned</td>
       </tr>
     </tbody>
     )
