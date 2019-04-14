@@ -22,16 +22,16 @@ class Login extends Component{
       <button className='ui blue button'>Login</button>
 
       </form>
-      <button onClick={this.signUpClickHandler}>New user? Sign up!</button>
+    <br></br>
+      <button className='ui blue button' onClick={this.signUpClickHandler}>New user? Sign up!</button>
       </div>
     )
   }
 
   render(){
-    console.log(this.state.signUp)
     return(
       <div>
-        {this.state.signUp ? <Signup /> : this.renderLogginFrom() }
+        {this.state.signUp ? <Signup createUser={this.props.createUser}/> : this.renderLogginFrom() }
       </div>
     )
   }

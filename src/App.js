@@ -6,6 +6,7 @@ import Signup from "./Containers/Signup"
 import IssuesContainer from "./Containers/IssuesContainer"
 import MyAssignments from "./Containers/MyAssignments"
 import Home from "./Containers/Home"
+import NavBar from "./Components/NavBar"
 
 import { Route, Switch, withRouter, Link } from "react-router-dom"
 
@@ -13,33 +14,30 @@ import { Route, Switch, withRouter, Link } from "react-router-dom"
 class App extends Component {
 
   state= {
-    // issues: [],
-    // myIssues: [],
-    loggedInEmployee: {}
+    issues: [],
+    myIssues: [],
+    employee: {}
   }
-  //
-  // componentDidMount() {
-  //   if (this.loggedInEmployee){
-  //     fetch('http://localhost:3000/api/v1/issues')
-  //     .then(resp => resp.json())
-  //     .then(issues => this.setState({
-  //       issues: issues
-  //     }))
-  //
-  //     fetch('http://localhost:3000/api/v1/employees/8')
-  //     .then(resp => resp.json())
-  //     .then(myIssues => {
-  //       this.setState({myIssues: myIssues.issues})
-  //     })
-  //   } else {
-  //     return (<h1>not logged in</h1>)
-  //   }
-  // }
 
-  signupSubmitHandler = (form) => {
-    console.log(form.password);
-    debugger;
-    fetch('http://localhost:3000/api/v1/signup',{
+  componentDidMount() {
+    let token = localStorage.getItem("token")
+    fetch('http://localhost:3000/api/v1/get_employee',{
+      method: "GET",
+      headers:{
+        "Content-Type": "application/json",
+        accepts: "application/json",
+        authorization: `${token}`
+      }
+    })
+    .then(res => res.json())
+    .then(data =>{
+      this.setState({employee: data})
+    })
+  }
+
+  createUser = (form) => {
+
+    fetch('http://localhost:3000/api/v1/employees',{
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -53,18 +51,35 @@ class App extends Component {
         }
       })
     }).then(res => res.json())
-      .then(loggedInEmployee =>{
-        this.setState({loggedInEmployee})
+      .then(data => {
+        console.log(data)
+        this.setState({employee: data})
+        localStorage.setItem("token", data.token)
       })
   }
 
+  logoutHandler = () => {
+    localStorage.removeItem("token")
+    this.setState({employee: {}})
+  }
+
+
   render() {
-    console.log("logging from rendder",this.state.loggedInEmployee)
+    console.log("render state",this.state.employee)
     return(
+      <div>
+      <NavBar logoutHandler={this.logoutHandler}/>
       <Switch>
-        <Route  path ="/home" component={Home}/>
-        <Route  path="/" component={Login}/>
+        <Route  path ="/home" render={()=> <Home employee={this.state.employee}/ >}/>
+
+        <Route path="/test" render={()=> <test />}/>
+
+        <Route  path="/" render={()=> <Login createUser={this.createUser}/>}/>
+
+
       </Switch>
+
+      </div>
     )
   }
 }

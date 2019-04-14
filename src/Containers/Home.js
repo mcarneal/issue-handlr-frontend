@@ -1,36 +1,37 @@
 import React, { Component } from "react";
+import {Route, Switch, withRouter} from 'react-router-dom'
 import IssuesContainer from "./IssuesContainer"
 import MyAssignments from "./MyAssignments"
 import '../App.css'
 
 class Home extends Component {
+
   state = {
-    issues: [],
-    myIssues: []
+    issues: []
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3000/api/v1/issues')
-    .then(resp => resp.json())
-    .then(issues => this.setState({
-      issues: issues
-    }))
-    fetch('http://localhost:3000/api/v1/employees/8')
-    .then(resp => resp.json())
-    .then(myIssues => {
-      this.setState({myIssues: myIssues.issues})
-    })
-  }
+  componentDidMount(){
+
+    if(this.props.employee.username){
+      fetch('http://localhost:3000/api/v1/issues')
+      .then(resp => resp.json())
+      .then(issues => this.setState({
+        issues: issues
+      }))
+    } else{
+      this.props.history.push("/")
+    }
+    }
 
   render() {
-    console.log('state issues', this.state.myIssues)
+
+
     return (
       <div className="Home">
-      <MyAssignments myIssues={this.state.myIssues}/>
       <IssuesContainer issues={this.state.issues} />
       </div>
     )
   }
 }
 
-export default Home;
+export default withRouter(Home);
