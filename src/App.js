@@ -52,7 +52,6 @@ class App extends Component {
       })
     }).then(res => res.json())
       .then(data => {
-        console.log(data)
         this.setState({employee: data})
         localStorage.setItem("token", data.token)
       })
@@ -63,18 +62,35 @@ class App extends Component {
     this.setState({employee: {}})
   }
 
+  loginHandler = (username, password) => {
+  fetch('http://localhost:3000/api/v1/login',{
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      employee: {
+        password: password,
+        username: username
+      }
+    })
+  }).then(res => res.json())
+    .then(data => {
+      this.setState({employee: data})
+      localStorage.setItem("token", data.token)
+    })
+}
+
+
 
   render() {
-    console.log("render state",this.state.employee)
     return(
       <div>
       <NavBar logoutHandler={this.logoutHandler}/>
       <Switch>
         <Route  path ="/home" render={()=> <Home employee={this.state.employee}/ >}/>
 
-        <Route path="/test" render={()=> <test />}/>
-
-        <Route  path="/" render={()=> <Login createUser={this.createUser}/>}/>
+        <Route  path="/" render={()=> <Login loginHandler={this.loginHandler} createUser={this.createUser}/>}/>
 
 
       </Switch>

@@ -7,10 +7,7 @@ const NavBar = (props) => {
       <Link to="/home">
       <li>Home</li>
       </Link>
-      <Link to="/test">
-        <li>test</li>
-      </Link>
-      <Link to="/home" onClick={props.logoutHandler}>
+      <Link to="/" onClick={props.logoutHandler}>
       <li>Logout</li>
       </Link>
     </ul>
