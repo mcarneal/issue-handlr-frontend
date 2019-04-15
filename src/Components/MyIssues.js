@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 class MyIssues extends Component{
   render(){
     return(
-
-      <div class="ui card">
+      <div class="ui card" onClick={() => this.props.myAssignmentsCardClickHandler(this.props)}>
       <div class="content">
       <div class="header">{this.props.title}</div>
       <div class="meta">Incomplete</div>

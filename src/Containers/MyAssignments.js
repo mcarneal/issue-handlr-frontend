@@ -6,13 +6,12 @@ import '../App.css'
 
 class MyAssignments extends Component {
 
+
   myAssignments = () => {
-    console.log("inside assignments render",this.props.myAssignments)
-    return this.props.myAssignments.map(issue => <MyIssues key={issue.id} {...issue} />)
+    return this.props.myAssignments.map(issue => <MyIssues key={issue.id} {...issue} myAssignmentsCardClickHandler={this.props.myAssignmentsCardClickHandler}/>)
   }
 
   render(){
-    console.log("inside assignments render",this.props.myAssignments)
     return(
       <div className='My Assignments Container'>
         <div className="ui cards">
