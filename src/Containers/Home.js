@@ -8,35 +8,40 @@ class Home extends Component {
 
   state = {
     issues: [],
-    myIssues: []
+    myAssignments: []
   }
 
   componentDidMount(){
-
     if(this.props.employee.username){
       fetch('http://localhost:3000/api/v1/issues')
       .then(resp => resp.json())
       .then(issues => this.setState({
         issues: issues
+      }, () => {
+        this.myAssignments()
       }))
     } else {
       this.props.history.push("/")
     }
   }
 
-  myIssues = () => {
-    return this.state.issues.filter((issue) => {
-      return issue.assignments.filter((assignment) => {
-        return assignment.employee_id === this.props.employee.id
+  myAssignments = () => {
+    let newArr = []
+    this.state.issues.forEach((issue) => {
+       issue.assignments.forEach((assignment) => {
+        return assignment.employee_id === this.props.employee.id ? newArr.push(assignment) : null
       })
+    })
+    this.setState({
+      myAssignments: newArr
     })
   }
 
   render() {
-    console.log(this.myIssues());
     return (
       <div className="home">
       <IssuesContainer issues={this.state.issues} />
+      <MyAssignments myAssignments={this.state.myAssignments} />
       </div>
     )
   }
