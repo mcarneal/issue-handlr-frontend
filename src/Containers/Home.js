@@ -24,17 +24,14 @@ class Home extends Component {
       this.props.history.push("/")
     }
   }
+}
+
 
   myIssues = () => {
     return this.state.issues.filter((issue) => {
       console.log(issue.assignments);
     })
   }
-    }
-
-  render() {
-    console.log(this.state.issues)
-
 
   render() {
     console.log(this.myIssues());
