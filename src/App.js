@@ -16,7 +16,7 @@ class App extends Component {
   state= {
     issues: [],
     myIssues: [],
-    employee: {}
+    employee: ''
   }
 
   componentDidMount() {
@@ -31,7 +31,7 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(data =>{
-      this.setState({employee: data})
+        this.setState({employee: data.username})
     })
   }
 
@@ -52,33 +52,35 @@ class App extends Component {
       })
     }).then(res => res.json())
       .then(data => {
-        this.setState({employee: data})
+        this.setState({employee: data.username})
         localStorage.setItem("token", data.token)
       })
   }
 
   logoutHandler = () => {
     localStorage.removeItem("token")
-    this.setState({employee: {}})
+    this.setState({employee: ''})
   }
 
   loginHandler = (username, password) => {
-  fetch('http://localhost:3000/api/v1/login',{
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      employee: {
-        password: password,
-        username: username
-      }
-    })
-  }).then(res => res.json())
-    .then(data => {
-      this.setState({employee: data})
-      localStorage.setItem("token", data.token)
-    })
+    fetch('http://localhost:3000/api/v1/login',{
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        employee: {
+          password: password,
+          username: username
+        }
+      })
+    }).then(res => res.json())
+      .then(data => {
+        this.setState({employee: data.username})
+        console.log('console.log from login handler ', this.state.employee)
+        localStorage.setItem("token", data.token)
+        this.props.history.push('/home')
+      })
 }
 
 
@@ -100,4 +102,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

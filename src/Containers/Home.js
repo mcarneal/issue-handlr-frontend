@@ -11,8 +11,9 @@ class Home extends Component {
   }
 
   componentDidMount(){
+    console.log(this.props.employee)
 
-    if(this.props.employee.username){
+    if(this.props.employee){
       fetch('http://localhost:3000/api/v1/issues')
       .then(resp => resp.json())
       .then(issues => this.setState({
