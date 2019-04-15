@@ -109,20 +109,17 @@ class App extends Component {
       })
 }
 
-
-
   render() {
     return(
       <div>
-      <NavBar logoutHandler={this.logoutHandler}/>
+        <NavBar className='nav' logoutHandler={this.logoutHandler}/>
+      <div className='main container'>
       <Switch>
         <Route  path ="/home" render={()=> <Home employee={this.state.employee}/ >}/>
 
         <Route  path="/" render={()=> <Login loginHandler={this.loginHandler} createUser={this.createUser}/>}/>
-
-
       </Switch>
-
+    </div>
       </div>
     )
   }

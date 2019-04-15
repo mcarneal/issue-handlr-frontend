@@ -40,8 +40,8 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-      <IssuesContainer issues={this.state.issues} />
       <MyAssignments myAssignments={this.state.myAssignments} />
+      <IssuesContainer issues={this.state.issues} />
       </div>
     )
   }

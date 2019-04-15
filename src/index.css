@@ -6,6 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("/images/office3.jpg")
+
 }
 
 code {
@@ -14,23 +16,44 @@ code {
 }
 
 .home {
-  content: "";
   display: flex;
   clear: both;
-  height: 100%;
-  position: fixed;
+  height: 100vh;
+  overflow-y: hidden;
 
 }
+
+.login{
+  position: fixed;
+  margin-top: 10em;
+  margin-left: 45%;
+  margin-right: 45%;
+  text-align: center;
+}
+
+.main.container{
+  position: absolute;
+}
+
+
+
+
+.ui.inverted.segment, .ui.primary.inverted.segment{
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  opacity: 99% !important;
+}
 .My.Assignments.Container {
+  margin-top: 8%;
   float: left;
   width: 25%;
-  margin-left: 3%;
-  margin-top: 3%;
   overflow: scroll;
 
 }
 
 .IssuesContainer {
+  margin-top: 8%;
   float: left;
   width: 100%;
   overflow: scroll;
@@ -52,4 +75,14 @@ code {
 }
 .header, .meta, .description{
     color : rgb(191,191,191) !important;
+}
+
+.logoImg{
+  border-radius: 2%;
+}
+
+
+
+#logout{
+
 }

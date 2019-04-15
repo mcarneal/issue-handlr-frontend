@@ -26,7 +26,8 @@ class Login extends Component{
 
   renderLogginFrom = () => {
     return (
-      <div>
+      <div className='login'>
+        <div className='loginform'>
       <form>
       <input type='text' name='username' placeholder='username' onChange={this.loginChangeHandler} />
       <br></br>
@@ -37,6 +38,7 @@ class Login extends Component{
       </form>
     <br></br>
       <button className='ui blue button' onClick={this.signUpClickHandler}>New user? Sign up!</button>
+      </div>
       </div>
     )
   }
