@@ -105,7 +105,7 @@ class App extends Component {
           }
         })
         localStorage.setItem("token", data.token)
-        this.props.history.push('/home')
+        // this.props.history.push('/home')
       })
 }
 
@@ -116,7 +116,6 @@ class App extends Component {
       <div className='main container'>
       <Switch>
         <Route  path ="/home" render={()=> <Home employee={this.state.employee}/ >}/>
-
         <Route  path="/" render={()=> <Login loginHandler={this.loginHandler} createUser={this.createUser}/>}/>
       </Switch>
     </div>

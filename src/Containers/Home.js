@@ -8,7 +8,9 @@ class Home extends Component {
 
   state = {
     issues: [],
-    myAssignments: []
+    myAssignments: [],
+    chosenAssignment: {},
+    isAssignmentChosen: false
   }
 
   componentDidMount(){
@@ -37,11 +39,32 @@ class Home extends Component {
     })
   }
 
+  myAssignmentsCardClickHandler = (chosenCard) => {
+    this.setState({
+      chosenAssignment: chosenCard,
+      isAssignmentChosen: true
+    })
+  }
+
+  backButtonHandler = () => {
+    this.setState({
+      isAssignmentChosen: false
+    })
+  }
+
   render() {
     return (
       <div className="home">
-      <MyAssignments myAssignments={this.state.myAssignments} />
-      <IssuesContainer issues={this.state.issues} />
+      <MyAssignments
+        myAssignments={this.state.myAssignments}
+        myAssignmentsCardClickHandler={chosenCard => this.myAssignmentsCardClickHandler(chosenCard)}
+      />
+      <IssuesContainer
+        issues={this.state.issues}
+        chosenAssignment={this.state.chosenAssignment}
+        isAssignmentChosen={this.state.isAssignmentChosen}
+        backButtonHandler={this.backButtonHandler}
+        />
       </div>
     )
   }
