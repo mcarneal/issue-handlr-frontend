@@ -12,7 +12,6 @@ class IssuesContainer extends Component{
   render(){
     return(
       <div className="IssuesContainer">
-      <h2>Issues Container</h2>
         <table className="ui celled inverted selectable table">
           <thead className=""><tr className="">
             <th className="">Title</th>

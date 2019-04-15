@@ -13,7 +13,7 @@ code {
     monospace;
 }
 
-.MainContainer {
+.home {
   content: "";
   display: flex;
   clear: both;
@@ -32,7 +32,7 @@ code {
 
 .IssuesContainer {
   float: left;
-  width: 75%;
+  width: 100%;
   overflow: scroll;
 }
 

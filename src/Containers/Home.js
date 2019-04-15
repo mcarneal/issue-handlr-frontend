@@ -11,8 +11,6 @@ class Home extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props.employee)
-
     if(this.props.employee){
       fetch('http://localhost:3000/api/v1/issues')
       .then(resp => resp.json())
@@ -25,10 +23,10 @@ class Home extends Component {
     }
 
   render() {
-
+    console.log(this.state.issues)
 
     return (
-      <div className="Home">
+      <div className="home">
       <IssuesContainer issues={this.state.issues} />
       </div>
     )
