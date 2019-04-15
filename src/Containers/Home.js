@@ -14,22 +14,21 @@ class Home extends Component {
   componentDidMount(){
 
     if(this.props.employee.username){
-    if(this.props.employee){
       fetch('http://localhost:3000/api/v1/issues')
       .then(resp => resp.json())
       .then(issues => this.setState({
         issues: issues
       }))
-    } else{
+    } else {
       this.props.history.push("/")
     }
   }
-}
-
 
   myIssues = () => {
     return this.state.issues.filter((issue) => {
-      console.log(issue.assignments);
+      return issue.assignments.filter((assignment) => {
+        return assignment.employee_id === this.props.employee.id
+      })
     })
   }
 
