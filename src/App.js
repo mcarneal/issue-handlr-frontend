@@ -16,7 +16,10 @@ class App extends Component {
   state= {
     issues: [],
     myIssues: [],
-    employee: ''
+    employee: {
+      username: '',
+      id: null
+    }
   }
 
   componentDidMount() {
@@ -31,7 +34,13 @@ class App extends Component {
     })
     .then(res => res.json())
     .then(data =>{
-        this.setState({employee: data.username})
+        this.setState({
+          employee: {
+            ...this.state.employee,
+            username: data.username,
+            id: data.id
+          }
+        })
     })
   }
 
@@ -52,14 +61,26 @@ class App extends Component {
       })
     }).then(res => res.json())
       .then(data => {
-        this.setState({employee: data.username})
+        this.setState({
+          employee: {
+            ...this.state.employee,
+            username: data.username,
+            id: data.id
+          }
+        })
         localStorage.setItem("token", data.token)
       })
   }
 
   logoutHandler = () => {
     localStorage.removeItem("token")
-    this.setState({employee: ''})
+    this.setState({
+      employee: {
+        ...this.state.employee,
+        username: '',
+        id: null
+      }
+    })
   }
 
   loginHandler = (username, password) => {
@@ -76,8 +97,13 @@ class App extends Component {
       })
     }).then(res => res.json())
       .then(data => {
-        this.setState({employee: data.username})
-        console.log('console.log from login handler ', this.state.employee)
+        this.setState({
+          employee: {
+            ...this.state.employee,
+            username: data.username,
+            id: data.id
+          }
+        })
         localStorage.setItem("token", data.token)
         this.props.history.push('/home')
       })

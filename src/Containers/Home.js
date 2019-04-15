@@ -7,13 +7,12 @@ import '../App.css'
 class Home extends Component {
 
   state = {
-    issues: []
+    issues: [],
+    myIssues: []
   }
 
   componentDidMount(){
-    console.log(this.props.employee)
-
-    if(this.props.employee){
+    if(this.props.employee.username){
       fetch('http://localhost:3000/api/v1/issues')
       .then(resp => resp.json())
       .then(issues => this.setState({
@@ -22,11 +21,16 @@ class Home extends Component {
     } else{
       this.props.history.push("/")
     }
-    }
+  }
+
+  myIssues = () => {
+    return this.state.issues.filter((issue) => {
+      console.log(issue.assignments);
+    })
+  }
 
   render() {
-
-
+    console.log(this.myIssues());
     return (
       <div className="Home">
       <IssuesContainer issues={this.state.issues} />
