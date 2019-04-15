@@ -12,7 +12,9 @@ class Home extends Component {
   }
 
   componentDidMount(){
+
     if(this.props.employee.username){
+    if(this.props.employee){
       fetch('http://localhost:3000/api/v1/issues')
       .then(resp => resp.json())
       .then(issues => this.setState({
@@ -28,11 +30,16 @@ class Home extends Component {
       console.log(issue.assignments);
     })
   }
+    }
+
+  render() {
+    console.log(this.state.issues)
+
 
   render() {
     console.log(this.myIssues());
     return (
-      <div className="Home">
+      <div className="home">
       <IssuesContainer issues={this.state.issues} />
       </div>
     )

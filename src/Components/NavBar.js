@@ -3,16 +3,22 @@ import { Link } from 'react-router-dom';
 
 const NavBar = (props) => {
   return (
-    <ul>
-      <Link to="/home">
-      <li>Home</li>
-      </Link>
-      <Link to="/" onClick={props.logoutHandler}>
-      <li>Logout</li>
-      </Link>
-    </ul>
+    <div class="ui inverted segment">
+      <div class="ui inverted pointing secondary menu">
+        <a class="item">
+          <Link to="/home">
+          Home
+          </Link></a>
+        <a class="item">
+          <Link to="/" onClick={props.logoutHandler}>
+            <button onClick={(e)=> e.preventDefault()} className="ui blue button">LogOut</button>
+          </Link>
+        </a></div>
+      </div>
+
   )
 }
+
 
 
 
