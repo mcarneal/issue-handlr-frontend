@@ -36,7 +36,6 @@ class Login extends Component{
       <button onClick={this.loginClickHandler} className='ui blue button'>Login</button>
 
       </form>
-    <br></br>
       <button className='ui blue button' onClick={this.signUpClickHandler}>New user? Sign up!</button>
       </div>
       </div>

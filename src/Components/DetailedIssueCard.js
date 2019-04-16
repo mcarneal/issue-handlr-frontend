@@ -1,8 +1,11 @@
 import React from "react";
+import IssueBar from './issuebar'
 
 const DetailedIssueCard = (props) => {
+  debugger
   return (
-    <div>
+    <div className='issue'>
+      <IssueBar />
       <h1>{props.issue.title}</h1>
       <h2>Description <br/>{props.issue.description} </h2>
       <h2>Category <br/>{props.issue.category} </h2>

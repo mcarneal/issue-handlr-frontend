@@ -5,7 +5,7 @@ const NavBar = (props) => {
   return (
     <div className="ui inverted segment">
       <div className="ui inverted pointing secondary menu">
-        <img className="logoImg" src="/images/logo.png" height="75" width="200"/>
+        <img className="logoImg" src="/images/logo.png" height="50" width="150"/>
         <a className="item">
           <Link to="/home">
           Home

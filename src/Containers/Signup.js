@@ -31,6 +31,7 @@ class Signup extends Component{
 
   render(){
     return(
+      <div className="login">
       <form onSubmit={this.submitHandler}>
         <input type='text' name='name' placeholder='Name' onChange={this.signupChangeHandler} value={this.state.name}/>
         <br/>
@@ -45,6 +46,7 @@ class Signup extends Component{
         <br/>
         <button className='ui blue button'>Signup</button>
       </form>
+    </div>
     )
   }
 }

@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("/images/office3.jpg")
+  background-image: url("/images/background2.jpg")
 
 }
 
@@ -38,14 +38,13 @@ code {
 
 
 
-.ui.inverted.segment, .ui.primary.inverted.segment{
+.ui.segment, .ui.primary.segment{
   position: fixed;
   z-index: 4;
   width: 100%;
-  opacity: 99% !important;
 }
 .My.Assignments.Container {
-  margin-top: 8%;
+  margin-top: 6%;
   float: left;
   width: 25%;
   overflow: scroll;
@@ -53,9 +52,9 @@ code {
 }
 
 .IssuesContainer {
-  margin-top: 8%;
+  margin-top: 6%;
   float: left;
-  width: 100%;
+  width: 75%;
   overflow: scroll;
 }
 
@@ -79,6 +78,17 @@ code {
 
 .logoImg{
   border-radius: 2%;
+}
+
+.issue{
+  border-radius: 2%;
+  margin-top: 6%;
+  width: 75%;
+  background-color: rgb(246,246,246);
+}
+
+.ui.blue.button{
+  margin-bottom: 2%;
 }
 
 
