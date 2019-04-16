@@ -24,24 +24,30 @@ class App extends Component {
 
   componentDidMount() {
     let token = localStorage.getItem("token")
-    fetch('http://localhost:3000/api/v1/get_employee',{
-      method: "GET",
-      headers:{
-        "Content-Type": "application/json",
-        accepts: "application/json",
-        authorization: `${token}`
-      }
-    })
-    .then(res => res.json())
-    .then(data =>{
+    if (token) {
+      fetch('http://localhost:3000/api/v1/get_employee',{
+        method: "GET",
+        headers:{
+          "Content-Type": "application/json",
+          accepts: "application/json",
+          authorization: `${token}`
+        }
+      })
+      .then(res => res.json())
+      .then(data =>{
         this.setState({
           employee: {
             ...this.state.employee,
             username: data.username,
             id: data.id
           }
-        })
-    })
+        }, () => this.props.history.push('/home'))
+
+      })
+    } else {
+      debugger
+      this.props.history.push('/login')
+    }
   }
 
   createUser = (form) => {
@@ -81,6 +87,7 @@ class App extends Component {
         id: null
       }
     })
+    // this.props.history.push('/login')
   }
 
   loginHandler = (username, password) => {
@@ -105,20 +112,22 @@ class App extends Component {
           }
         })
         localStorage.setItem("token", data.token)
-        // this.props.history.push('/home')
+        this.props.history.push('/home')
       })
-}
+    }
 
   render() {
+    console.log(localStorage.getItem('token'))
+    // debugger
     return(
       <div>
         <NavBar className='nav' logoutHandler={this.logoutHandler}/>
-      <div className='main container'>
-      <Switch>
-        <Route  path ="/home" render={()=> <Home employee={this.state.employee}/ >}/>
-        <Route  path="/" render={()=> <Login loginHandler={this.loginHandler} createUser={this.createUser}/>}/>
-      </Switch>
-    </div>
+        <div className='main container'>
+          <Switch>
+            <Route exact path ="/home" render={()=> <Home employee={this.state.employee}/ >}/>
+            <Route exact path="/login" render={()=> <Login loginHandler={this.loginHandler} createUser={this.createUser}/>}/>
+          </Switch>
+        </div>
       </div>
     )
   }

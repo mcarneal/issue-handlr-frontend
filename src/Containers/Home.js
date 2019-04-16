@@ -23,7 +23,7 @@ class Home extends Component {
         this.myAssignments()
       }))
     } else {
-      this.props.history.push("/")
+      this.props.history.push("/login")
     }
   }
 

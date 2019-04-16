@@ -11,7 +11,7 @@ const NavBar = (props) => {
           Home
           </Link></a>
         <a className="item" id='logout'>
-          <Link to="/" onClick={props.logoutHandler}>
+          <Link to="/login" onClick={props.logoutHandler}>
           LogOut
           </Link>
         </a></div>
