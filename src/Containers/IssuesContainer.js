@@ -41,9 +41,12 @@ class IssuesContainer extends Component{
       return issue.id === this.props.chosenAssignment.issue_id
     })
     return (
-      <DetailedIssueCard issue={issueOfThisAssignment} backButtonHandler={this.props.backButtonHandler}/>
+      <DetailedIssueCard issue={issueOfThisAssignment} backButtonHandler={this.props.backButtonHandler}
+      deleteHandler={this.props.deleteHandler}/>
     )
   }
+
+
 
   render(){
     return this.props.isAssignmentChosen ? this.assignmentCard() : this.issueCard()

@@ -52,6 +52,28 @@ class Home extends Component {
     })
   }
 
+  deleteHandler = (issue) => {
+    fetch(`http://localhost:3000/api/v1/issues/${parseInt(issue.id)}`,{
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(res => res.json())
+      .then(issue => {
+
+        let newIssues = this.state.issues.filter(issueObj => {
+          return issue.id !== issueObj.id
+
+        })
+        this.setState({
+          issues: newIssues,
+          isAssignmentChosen: false
+        },
+          ()=>{this.myAssignments()}
+        )
+      })
+  }
+
   render() {
     return (
       <div className="home">
@@ -60,6 +82,7 @@ class Home extends Component {
         myAssignmentsCardClickHandler={chosenCard => this.myAssignmentsCardClickHandler(chosenCard)}
       />
       <IssuesContainer
+        deleteHandler={this.deleteHandler}
         issues={this.state.issues}
         chosenAssignment={this.state.chosenAssignment}
         isAssignmentChosen={this.state.isAssignmentChosen}

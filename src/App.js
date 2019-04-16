@@ -45,7 +45,6 @@ class App extends Component {
 
       })
     } else {
-      debugger
       this.props.history.push('/login')
     }
   }

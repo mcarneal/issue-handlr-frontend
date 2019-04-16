@@ -19,7 +19,7 @@ const IssueBar = (props) => {
     <a class="item">
       Add Assignment
     </a>
-    <a class="item">
+    <a class="item" onClick={()=> props.deleteHandler(props.issue)}>
       Cancel Ticket
     </a>
   </div>
