@@ -11,7 +11,9 @@ class Home extends Component {
     myAssignments: [],
     chosenAssignment: {},
     isAssignmentChosen: false,
-    statusChanged: false
+    statusChanged: false,
+    isIssueChosen: false,
+    chosenIssue: {}
   }
 
   componentDidMount(){
@@ -59,9 +61,17 @@ class Home extends Component {
     })
   }
 
+  individualIssueClickHandler = (issue) => {
+    this.setState({
+      isIssueChosen: true,
+      chosenIssue: issue
+    })
+  }
+
   backButtonHandler = () => {
     this.setState({
-      isAssignmentChosen: false
+      isAssignmentChosen: false,
+      isIssueChosen: false
     })
   }
 
@@ -118,6 +128,9 @@ class Home extends Component {
         isAssignmentChosen={this.state.isAssignmentChosen}
         backButtonHandler={this.backButtonHandler}
         changeStatusHandler={this.changeStatusHandler}
+        isIssueChosen={this.state.isIssueChosen}
+        individualIssueClickHandler={issue => this.individualIssueClickHandler(issue)}
+        chosenIssue={this.state.chosenIssue}
         />
       </div>
     )

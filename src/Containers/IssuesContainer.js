@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Issue from '../Components/Issue'
 import DetailedIssueCard from '../Components/DetailedIssueCard'
 import '../index.css'
-
+import IssueNavBar from '../Components/IssueNavBar'
 
 class IssuesContainer extends Component{
 
@@ -10,13 +10,10 @@ class IssuesContainer extends Component{
     showAllIssues: true,
     incompleteAssignments: [],
     completedAssignments: [],
-    chosenIssue: {}
   }
 
   clickHandler = (selectedIssue) => {
-    this.setState({
-      chosenIssue: selectedIssue
-    })
+    this.props.individualIssueClickHandler(selectedIssue)
   }
 
   issuesArray = () => {
@@ -25,28 +22,31 @@ class IssuesContainer extends Component{
 
   allIssues = () => {
     return (
-      <table className="ui celled inverted selectable table">
-        <thead className=""><tr className="">
-          <th className="">Title</th>
-          <th className="">Description</th>
-          <th className="">Status</th>
-        </tr>
-       </thead>
-       {this.issuesArray()}
-      </table>
+      <div className="IssuesContainer">
+        <table className="ui celled inverted selectable table">
+          <thead className=""><tr className="">
+            <th className="">Title</th>
+            <th className="">Description</th>
+            <th className="">Status</th>
+          </tr>
+         </thead>
+         {this.issuesArray()}
+        </table>
+      </div>
     )
   }
 
   individualIssue = () => {
     return (
       <div className="issue">
-      <h1>{this.state.chosenIssue.title}</h1>
-      <h2>Description <br/>{this.state.chosenIssue.description} </h2>
-      <h2>Category <br/>{this.state.chosenIssue.category} </h2>
+        <IssueNavBar backButtonHandler={this.props.backButtonHandler}/>
+      <h1>{this.props.chosenIssue.title}</h1>
+      <h2>Description <br/>{this.props.chosenIssue.description} </h2>
+      <h2>Category <br/>{this.props.chosenIssue.category} </h2>
       <h3> History </h3>
       <ul>
-        {this.state.chosenIssue.assignments.map((assignment) => {
-          let employeeOfAssignment = this.state.chosenIssue.employees.find((employee) => employee.id === assignment.employee_id)
+        {this.props.chosenIssue.assignments.map((assignment) => {
+          let employeeOfAssignment = this.props.chosenIssue.employees.find((employee) => employee.id === assignment.employee_id)
           return (
             <li>
               {assignment.title}
@@ -59,13 +59,12 @@ class IssuesContainer extends Component{
       </ul>
       </div>
     )
+
   }
 
   issueCard = () => {
     return (
-      <div className="IssuesContainer">
-        {this.state.chosenIssue.id ? this.individualIssue() : this.allIssues()}
-      </div>
+      this.props.isIssueChosen ? this.individualIssue() : this.allIssues()
     )
   }
 

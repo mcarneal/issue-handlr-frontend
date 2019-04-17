@@ -92,7 +92,13 @@ code {
   margin-bottom: 2%;
 }
 
-
+.individualIssue {
+  border-radius: 2%;
+  /* margin-top: 10%; */
+  width: 75%;
+  background-color: rgb(67,67,67);
+  color : rgb(191,191,191);
+}
 
 #logout{
 
