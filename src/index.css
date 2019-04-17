@@ -22,7 +22,6 @@ code {
   overflow-y: hidden;
 
 }
-
 .login{
   position: fixed;
   margin-top: 10em;
@@ -34,9 +33,6 @@ code {
 .main.container{
   position: absolute;
 }
-
-
-
 
 .ui.segment, .ui.primary.segment{
   position: fixed;
@@ -86,6 +82,7 @@ code {
   width: 75%;
   background-color: rgb(67,67,67);
   color : rgb(191,191,191);
+  text-align: center;
 }
 
 .ui.blue.button{
@@ -98,6 +95,15 @@ code {
   width: 75%;
   background-color: rgb(67,67,67);
   color : rgb(191,191,191);
+}
+
+
+.Description{
+  text-align: center;
+}
+
+.Title{
+  text-align: center;
 }
 
 #logout{

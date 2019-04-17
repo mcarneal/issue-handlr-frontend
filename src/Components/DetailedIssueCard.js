@@ -11,9 +11,15 @@ const DetailedIssueCard = (props) => {
       backButtonHandler={props.backButtonHandler}
       changeStatusHandler={props.changeStatusHandler}
       />
+    <div className='Title'>
       <h1>{props.issue.title}</h1>
+      </div>
+      <hr></hr>
+      <div className="Description">
       <h2>Description <br/>{props.issue.description} </h2>
-      <h2>Category <br/>{props.issue.category} </h2>
+      </div>
+        <hr></hr>
+      <h2>Category: {props.issue.category} </h2>
       <h3> History </h3>
       <ul>
         {props.issue.assignments.map((assignment) => {
@@ -22,6 +28,7 @@ const DetailedIssueCard = (props) => {
             <li>
               {assignment.title}
               <br/>
+              {console.log(employeeOfAssignment)}
               Assigned to: {employeeOfAssignment.name}
             </li>
           )

@@ -40,9 +40,15 @@ class IssuesContainer extends Component{
     return (
       <div className="issue">
         <IssueNavBar backButtonHandler={this.props.backButtonHandler}/>
+      <div className='Title'>
       <h1>{this.props.chosenIssue.title}</h1>
+      </div>
+      <hr></hr>
+      <div className='Description'>
       <h2>Description <br/>{this.props.chosenIssue.description} </h2>
-      <h2>Category <br/>{this.props.chosenIssue.category} </h2>
+      </div>
+        <hr></hr>
+      <h2>Category:{this.props.chosenIssue.category} </h2>
       <h3> History </h3>
       <ul>
         {this.props.chosenIssue.assignments.map((assignment) => {

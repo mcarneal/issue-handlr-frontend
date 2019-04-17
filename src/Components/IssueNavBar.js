@@ -5,7 +5,9 @@ const IssueNavBar = (props) => {
   return (
     <div class="ui menu">
     <Link className="item" onClick={props.backButtonHandler}>
+      <button className="ui red button">
       Back
+      </button>
     </Link>
     <Link className="item">
       Comment
