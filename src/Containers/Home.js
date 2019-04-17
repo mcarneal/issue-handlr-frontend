@@ -29,9 +29,9 @@ class Home extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    console.log('log from update previus state', prevState.statusChanged)
-    console.log('log from current state', this.state.statusChanged)
-
+    // this.setState({
+    //   statusChanged: prevState.chosenAssignment
+    // })
     if(prevState.statusChanged !== this.state.statusChanged){
       fetch('http://localhost:3000/api/v1/issues')
       .then(res => res.json())
@@ -88,7 +88,6 @@ class Home extends Component {
   }
 
   changeStatusHandler=() => {
-    console.log(this.state.chosenAssignment);
     fetch(`http://localhost:3000/api/v1/assignments/${this.state.chosenAssignment.id}`, {
       method: "PATCH",
       headers: {
@@ -100,7 +99,7 @@ class Home extends Component {
     })
     .then(res => res.json())
     .then(assignment => {
-      this.setState({statusChanged: !this.state.statusChanged})
+      this.setState({statusChanged: assignment.completed})
     })
   }
 

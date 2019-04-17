@@ -9,25 +9,62 @@ class IssuesContainer extends Component{
   state = {
     showAllIssues: true,
     incompleteAssignments: [],
-    completedAssignments: []
+    completedAssignments: [],
+    chosenIssue: {}
+  }
+
+  clickHandler = (selectedIssue) => {
+    this.setState({
+      chosenIssue: selectedIssue
+    })
   }
 
   issuesArray = () => {
-    return this.props.issues.map(issue => <Issue key={issue.id} {...issue}/>)
+    return this.props.issues.map(issue => <Issue key={issue.id} {...issue} clickHandler={this.clickHandler}/>)
+  }
+
+  allIssues = () => {
+    return (
+      <table className="ui celled inverted selectable table">
+        <thead className=""><tr className="">
+          <th className="">Title</th>
+          <th className="">Description</th>
+          <th className="">Status</th>
+        </tr>
+       </thead>
+       {this.issuesArray()}
+      </table>
+    )
+  }
+
+  individualIssue = () => {
+    return (
+      <div className="issue">
+      <h1>{this.state.chosenIssue.title}</h1>
+      <h2>Description <br/>{this.state.chosenIssue.description} </h2>
+      <h2>Category <br/>{this.state.chosenIssue.category} </h2>
+      <h3> History </h3>
+      <ul>
+        {this.state.chosenIssue.assignments.map((assignment) => {
+          let employeeOfAssignment = this.state.chosenIssue.employees.find((employee) => employee.id === assignment.employee_id)
+          return (
+            <li>
+              {assignment.title}
+              <br/>
+              Assigned to: {employeeOfAssignment.name}
+            </li>
+          )
+        })
+      }
+      </ul>
+      </div>
+    )
   }
 
   issueCard = () => {
     return (
       <div className="IssuesContainer">
-        <table className="ui celled inverted selectable table">
-          <thead className=""><tr className="">
-            <th className="">Title</th>
-            <th className="">Description</th>
-            <th className="">Status</th>
-          </tr>
-         </thead>
-         {this.issuesArray()}
-        </table>
+        {this.state.chosenIssue.id ? this.individualIssue() : this.allIssues()}
       </div>
     )
   }
