@@ -6,7 +6,8 @@ class Issue extends Component{
       return assignment.completed === true
     }).length : 0
 
-    let status = completedAssignments * 100 /this.props.assignments.length
+    let checkStatus = completedAssignments * 100 /this.props.assignments.length
+    let status = checkStatus >= 0 ? checkStatus : 0
 
     return(
       <tbody className="" onClick={() => this.props.clickHandler(this.props)}>
