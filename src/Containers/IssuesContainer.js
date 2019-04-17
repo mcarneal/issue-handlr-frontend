@@ -7,7 +7,9 @@ import '../index.css'
 class IssuesContainer extends Component{
 
   state = {
-    showAllIssues: true
+    showAllIssues: true,
+    incompleteAssignments: [],
+    completedAssignments: []
   }
 
   issuesArray = () => {
@@ -41,7 +43,10 @@ class IssuesContainer extends Component{
       return issue.id === this.props.chosenAssignment.issue_id
     })
     return (
-      <DetailedIssueCard issue={issueOfThisAssignment} backButtonHandler={this.props.backButtonHandler}
+      <DetailedIssueCard
+      issue={issueOfThisAssignment}
+      backButtonHandler={this.props.backButtonHandler}
+      changeStatusHandler={this.props.changeStatusHandler}
       deleteHandler={this.props.deleteHandler}/>
     )
   }

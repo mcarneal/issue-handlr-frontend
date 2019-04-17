@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Route, Switch, withRouter} from 'react-router-dom'
+import { withRouter} from 'react-router-dom'
 import IssuesContainer from "./IssuesContainer"
 import MyAssignments from "./MyAssignments"
 import '../App.css'
@@ -10,7 +10,8 @@ class Home extends Component {
     issues: [],
     myAssignments: [],
     chosenAssignment: {},
-    isAssignmentChosen: false
+    isAssignmentChosen: false,
+    statusChanged: false
   }
 
   componentDidMount(){
@@ -24,6 +25,18 @@ class Home extends Component {
       }))
     } else {
       this.props.history.push("/login")
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    console.log('log from update previus state', prevState.statusChanged)
+    console.log('log from current state', this.state.statusChanged)
+
+    if(prevState.statusChanged !== this.state.statusChanged){
+      fetch('http://localhost:3000/api/v1/issues')
+      .then(res => res.json())
+      .then(issues => this.setState({issues: issues}),
+      ()=> this.myAssignments())
     }
   }
 
@@ -74,6 +87,24 @@ class Home extends Component {
       })
   }
 
+  changeStatusHandler=() => {
+    console.log(this.state.chosenAssignment);
+    fetch(`http://localhost:3000/api/v1/assignments/${this.state.chosenAssignment.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        completed: !this.state.chosenAssignment.completed
+      })
+    })
+    .then(res => res.json())
+    .then(assignment => {
+      this.setState({statusChanged: !this.state.statusChanged})
+    })
+  }
+
+
   render() {
     return (
       <div className="home">
@@ -87,6 +118,7 @@ class Home extends Component {
         chosenAssignment={this.state.chosenAssignment}
         isAssignmentChosen={this.state.isAssignmentChosen}
         backButtonHandler={this.backButtonHandler}
+        changeStatusHandler={this.changeStatusHandler}
         />
       </div>
     )

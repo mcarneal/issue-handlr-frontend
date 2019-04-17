@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Login from "./Containers/Login"
-import Signup from "./Containers/Signup"
-import IssuesContainer from "./Containers/IssuesContainer"
-import MyAssignments from "./Containers/MyAssignments"
 import Home from "./Containers/Home"
 import NavBar from "./Components/NavBar"
 
-import { Route, Switch, withRouter, Link } from "react-router-dom"
+import { Route, Switch, withRouter } from "react-router-dom"
 
 
 class App extends Component {
@@ -116,8 +112,6 @@ class App extends Component {
     }
 
   render() {
-    console.log(localStorage.getItem('token'))
-    // debugger
     return(
       <div>
         <NavBar className='nav' logoutHandler={this.logoutHandler}/>

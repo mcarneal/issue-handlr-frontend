@@ -82,9 +82,10 @@ code {
 
 .issue{
   border-radius: 2%;
-  margin-top: 6%;
+  margin-top: 10%;
   width: 75%;
-  background-color: rgb(246,246,246);
+  background-color: rgb(67,67,67);
+  color : rgb(191,191,191);
 }
 
 .ui.blue.button{

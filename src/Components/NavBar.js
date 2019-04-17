@@ -5,16 +5,14 @@ const NavBar = (props) => {
   return (
     <div className="ui inverted segment">
       <div className="ui inverted pointing secondary menu">
-        <img className="logoImg" src="/images/logo.png" height="50" width="150"/>
-        <a className="item">
-          <Link to="/home">
+        <img alt="logo" className="logoImg" src="/images/logo.png" height="50" width="150"/>
+          <Link to="/home" className="item">
           Home
-          </Link></a>
-        <a className="item" id='logout'>
-          <Link to="/login" onClick={props.logoutHandler}>
+          </Link>
+          <Link to="/login" onClick={props.logoutHandler} className="item" id='logout'>
           LogOut
           </Link>
-        </a></div>
+        </div>
       </div>
 
   )

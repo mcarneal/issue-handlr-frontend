@@ -4,24 +4,24 @@ import { Link } from 'react-router-dom';
 const IssueBar = (props) => {
   return (
     <div class="ui menu">
-    <div class="header item">
-      More Options
-    </div>
-    <a class="item">
+    <Link className="item" onClick={props.backButtonHandler}>
+      Back
+    </Link>
+    <Link className="item">
       Comment
-    </a>
-    <a class="item">
+    </Link>
+    <Link className="item">
       Contact
-    </a>
-    <a class="item">
+    </Link>
+    <Link className="item" onClick={props.changeStatusHandler}>
       Change Status
-    </a>
-    <a class="item">
+    </Link>
+    <Link className="item">
       Add Assignment
-    </a>
-    <a class="item" onClick={()=> props.deleteHandler(props.issue)}>
+    </Link>
+    <Link className="item" onClick={()=> props.deleteHandler(props.issue)}>
       Cancel Ticket
-    </a>
+    </Link>
   </div>
 
   )
