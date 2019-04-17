@@ -5,11 +5,12 @@ const DetailedIssueCard = (props) => {
 
   return (
     <div className='issue'>
-      <IssueBar
+      <IssueBar 
       deleteHandler={props.deleteHandler}
       issue={props.issue}
       backButtonHandler={props.backButtonHandler}
       changeStatusHandler={props.changeStatusHandler}
+      contactClickHandler={props.contactClickHandler}
       />
     <div className='Title'>
       <h1>{props.issue.title}</h1>
@@ -25,10 +26,9 @@ const DetailedIssueCard = (props) => {
         {props.issue.assignments.map((assignment) => {
           let employeeOfAssignment = props.issue.employees.find((employee) => employee.id === assignment.employee_id)
           return (
-            <li>
+            <li key={assignment.id}>
               {assignment.title}
               <br/>
-              {console.log(employeeOfAssignment)}
               Assigned to: {employeeOfAssignment.name}
             </li>
           )

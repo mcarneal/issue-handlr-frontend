@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Popup from 'react-popup';
 
 const IssueBar = (props) => {
   return (
-    <div class="ui menu">
+    <div className="ui menu">
     <Link className="item" onClick={props.backButtonHandler}>
       <button className="ui red button">
       Back
     </button>
     </Link>
-    <Link className="item">
+    <Link className="item" >
       Comment
     </Link>
-    <Link className="item">
+    <Link className="item" onClick={()=> props.contactClickHandler(props)}>
       Contact
     </Link>
     <Link className="item" onClick={props.changeStatusHandler}>

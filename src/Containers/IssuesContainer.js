@@ -3,6 +3,8 @@ import Issue from '../Components/Issue'
 import DetailedIssueCard from '../Components/DetailedIssueCard'
 import '../index.css'
 import IssueNavBar from '../Components/IssueNavBar'
+import Popup from 'react-popup';
+// import Popup from './Popup'
 
 class IssuesContainer extends Component{
 
@@ -80,6 +82,10 @@ class IssuesContainer extends Component{
     })
   }
 
+  contactClickHandler = (props) => {
+      return <Popup />
+  }
+
   assignmentCard = () => {
     let issueOfThisAssignment = this.props.issues.find(issue => {
       return issue.id === this.props.chosenAssignment.issue_id
@@ -89,14 +95,19 @@ class IssuesContainer extends Component{
       issue={issueOfThisAssignment}
       backButtonHandler={this.props.backButtonHandler}
       changeStatusHandler={this.props.changeStatusHandler}
-      deleteHandler={this.props.deleteHandler}/>
+      deleteHandler={this.props.deleteHandler}
+      contactClickHandler={this.contactClickHandler}
+      />
     )
   }
 
 
 
   render(){
-    return this.props.isAssignmentChosen ? this.assignmentCard() : this.issueCard()
+
+    return (
+      this.props.isAssignmentChosen ? this.assignmentCard() : this.issueCard()
+    )
   }
 
 
