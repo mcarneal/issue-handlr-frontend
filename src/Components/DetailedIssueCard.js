@@ -30,6 +30,7 @@ const DetailedIssueCard = (props) => {
               <br/>
               {console.log(employeeOfAssignment)}
               Assigned to: {employeeOfAssignment.name}
+           
             </li>
           )
         })

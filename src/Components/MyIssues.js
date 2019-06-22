@@ -6,7 +6,7 @@ class MyIssues extends Component{
       <div className="ui card" onClick={() => this.props.myAssignmentsCardClickHandler(this.props)}>
       <div className="content">
       <div className="header">{this.props.title}</div>
-      <div className="meta">Incomplete</div>
+      <div className="meta"></div>
       <div className="description">{this.props.description}</div>
       </div>
       </div>

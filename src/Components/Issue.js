@@ -20,4 +20,5 @@ class Issue extends Component{
     )
   }
 }
+
 export default Issue;
